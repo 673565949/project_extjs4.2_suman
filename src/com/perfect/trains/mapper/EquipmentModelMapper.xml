@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.perfect.trains.mapper.EquipmentModelMapper" >
+  <resultMap id="BaseResultMap" type="com.perfect.trains.model.EquipmentModel" >
+    <id column="equipmentModel_id" property="id" />
+    <result column="equipmentModel_equipment_classification_id" property="equipmentClassificationId" jdbcType="BIGINT" />
+    <result column="equipmentModel_name" property="name" jdbcType="VARCHAR" />
+    <result column="equipmentModel_note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    equipmentModel.id as equipmentModel_id, equipmentModel.equipment_classification_id as equipmentModel_equipment_classification_id, 
+    equipmentModel.`name` as `equipmentModel_name`, equipmentModel.note as equipmentModel_note
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.perfect.trains.model.EquipmentModelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from equipment_model equipmentModel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from equipment_model equipmentModel
+    where equipmentModel.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete equipmentModel from equipment_model equipmentModel
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.perfect.trains.model.EquipmentModelExample" >
+    delete equipmentModel from equipment_model equipmentModel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.perfect.trains.model.EquipmentModel" useGeneratedKeys="true" keyProperty="id" >
+    insert into equipment_model (equipment_classification_id, `name`, note
+      )
+    values (#{equipmentClassificationId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.perfect.trains.model.EquipmentModel" useGeneratedKeys="true" keyProperty="id" >
+    insert into equipment_model
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="equipmentClassificationId != null" >
+        equipment_classification_id,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="equipmentClassificationId != null" >
+        #{equipmentClassificationId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.perfect.trains.model.EquipmentModelExample" resultType="java.lang.Integer" >
+    select count(*) from equipment_model equipmentModel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update equipment_model equipmentModel
+    <set >
+      <if test="record.id != null" >
+        equipmentModel.id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.equipmentClassificationId != null" >
+        equipmentModel.equipment_classification_id = #{record.equipmentClassificationId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        equipmentModel.`name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.note != null" >
+        equipmentModel.note = #{record.note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update equipment_model equipmentModel
+    set equipmentModel.id = #{record.id,jdbcType=BIGINT},
+      equipmentModel.equipment_classification_id = #{record.equipmentClassificationId,jdbcType=BIGINT},
+      equipmentModel.`name` = #{record.name,jdbcType=VARCHAR},
+      equipmentModel.note = #{record.note,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.perfect.trains.model.EquipmentModel" >
+    update equipment_model
+    <set >
+      <if test="equipmentClassificationId != null" >
+        equipment_classification_id = #{equipmentClassificationId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.perfect.trains.model.EquipmentModel" >
+    update equipment_model
+    set equipment_classification_id = #{equipmentClassificationId,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

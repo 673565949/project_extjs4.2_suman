@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.perfect.trains.mapper.SysLogMapper" >
+  <resultMap id="BaseResultMap" type="com.perfect.trains.model.SysLog" >
+    <id column="log_id" property="id" />
+    <result column="log_user_ip" property="userIp" jdbcType="VARCHAR" />
+    <result column="log_insert_date" property="insertDate" jdbcType="DATE" />
+    <result column="log_context" property="context" jdbcType="VARCHAR" />
+    <result column="log_action_name" property="actionName" jdbcType="VARCHAR" />
+    <result column="log_method_name" property="methodName" jdbcType="VARCHAR" />
+    <result column="log_module_name" property="moduleName" jdbcType="VARCHAR" />
+    <result column="log_user_name" property="userName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    log.id as log_id, log.user_ip as log_user_ip, log.insert_date as log_insert_date, 
+    log.context as log_context, log.action_name as log_action_name, log.method_name as log_method_name, 
+    log.module_name as log_module_name, log.user_name as log_user_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.perfect.trains.model.SysLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from log log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from log log
+    where log.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete log from log log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.perfect.trains.model.SysLogExample" >
+    delete log from log log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.perfect.trains.model.SysLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into log (user_ip, insert_date, context, 
+      action_name, method_name, module_name, 
+      user_name)
+    values (#{userIp,jdbcType=VARCHAR}, #{insertDate,jdbcType=DATE}, #{context,jdbcType=VARCHAR}, 
+      #{actionName,jdbcType=VARCHAR}, #{methodName,jdbcType=VARCHAR}, #{moduleName,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.perfect.trains.model.SysLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userIp != null" >
+        user_ip,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="actionName != null" >
+        action_name,
+      </if>
+      <if test="methodName != null" >
+        method_name,
+      </if>
+      <if test="moduleName != null" >
+        module_name,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userIp != null" >
+        #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=DATE},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="actionName != null" >
+        #{actionName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null" >
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleName != null" >
+        #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.perfect.trains.model.SysLogExample" resultType="java.lang.Integer" >
+    select count(*) from log log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update log log
+    <set >
+      <if test="record.id != null" >
+        log.id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.userIp != null" >
+        log.user_ip = #{record.userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insertDate != null" >
+        log.insert_date = #{record.insertDate,jdbcType=DATE},
+      </if>
+      <if test="record.context != null" >
+        log.context = #{record.context,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actionName != null" >
+        log.action_name = #{record.actionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.methodName != null" >
+        log.method_name = #{record.methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moduleName != null" >
+        log.module_name = #{record.moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        log.user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update log log
+    set log.id = #{record.id,jdbcType=BIGINT},
+      log.user_ip = #{record.userIp,jdbcType=VARCHAR},
+      log.insert_date = #{record.insertDate,jdbcType=DATE},
+      log.context = #{record.context,jdbcType=VARCHAR},
+      log.action_name = #{record.actionName,jdbcType=VARCHAR},
+      log.method_name = #{record.methodName,jdbcType=VARCHAR},
+      log.module_name = #{record.moduleName,jdbcType=VARCHAR},
+      log.user_name = #{record.userName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.perfect.trains.model.SysLog" >
+    update log
+    <set >
+      <if test="userIp != null" >
+        user_ip = #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=DATE},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="actionName != null" >
+        action_name = #{actionName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodName != null" >
+        method_name = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleName != null" >
+        module_name = #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.perfect.trains.model.SysLog" >
+    update log
+    set user_ip = #{userIp,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=DATE},
+      context = #{context,jdbcType=VARCHAR},
+      action_name = #{actionName,jdbcType=VARCHAR},
+      method_name = #{methodName,jdbcType=VARCHAR},
+      module_name = #{moduleName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

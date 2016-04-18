@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.perfect.trains.mapper.TrainRepairRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.perfect.trains.model.TrainRepairRecord" >
+    <id column="trainRepairRecord_id" property="id" />
+    <result column="trainRepairRecord_train_id" property="trainId" jdbcType="BIGINT" />
+    <result column="trainRepairRecord_train_model" property="trainModel" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_train_name" property="trainName" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_repair_date" property="repairDate" jdbcType="DATE" />
+    <result column="trainRepairRecord_type" property="type" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter1" property="parameter1" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter2" property="parameter2" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter3" property="parameter3" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter4" property="parameter4" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter5" property="parameter5" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter6" property="parameter6" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter7" property="parameter7" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter8" property="parameter8" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter9" property="parameter9" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter10" property="parameter10" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter11" property="parameter11" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter12" property="parameter12" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter13" property="parameter13" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter14" property="parameter14" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter15" property="parameter15" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter16" property="parameter16" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter17" property="parameter17" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter18" property="parameter18" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter19" property="parameter19" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter20" property="parameter20" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter21" property="parameter21" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter22" property="parameter22" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter23" property="parameter23" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter24" property="parameter24" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter25" property="parameter25" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter26" property="parameter26" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter27" property="parameter27" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter28" property="parameter28" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter29" property="parameter29" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter30" property="parameter30" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter31" property="parameter31" jdbcType="VARCHAR" />
+    <result column="trainRepairRecord_parameter32" property="parameter32" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    trainRepairRecord.id as trainRepairRecord_id, trainRepairRecord.train_id as trainRepairRecord_train_id, 
+    trainRepairRecord.train_model as trainRepairRecord_train_model, trainRepairRecord.train_name as trainRepairRecord_train_name, 
+    trainRepairRecord.repair_date as trainRepairRecord_repair_date, trainRepairRecord.`type` as `trainRepairRecord_type`, 
+    trainRepairRecord.parameter1 as trainRepairRecord_parameter1, trainRepairRecord.parameter2 as trainRepairRecord_parameter2, 
+    trainRepairRecord.parameter3 as trainRepairRecord_parameter3, trainRepairRecord.parameter4 as trainRepairRecord_parameter4, 
+    trainRepairRecord.parameter5 as trainRepairRecord_parameter5, trainRepairRecord.parameter6 as trainRepairRecord_parameter6, 
+    trainRepairRecord.parameter7 as trainRepairRecord_parameter7, trainRepairRecord.parameter8 as trainRepairRecord_parameter8, 
+    trainRepairRecord.parameter9 as trainRepairRecord_parameter9, trainRepairRecord.parameter10 as trainRepairRecord_parameter10, 
+    trainRepairRecord.parameter11 as trainRepairRecord_parameter11, trainRepairRecord.parameter12 as trainRepairRecord_parameter12, 
+    trainRepairRecord.parameter13 as trainRepairRecord_parameter13, trainRepairRecord.parameter14 as trainRepairRecord_parameter14, 
+    trainRepairRecord.parameter15 as trainRepairRecord_parameter15, trainRepairRecord.parameter16 as trainRepairRecord_parameter16, 
+    trainRepairRecord.parameter17 as trainRepairRecord_parameter17, trainRepairRecord.parameter18 as trainRepairRecord_parameter18, 
+    trainRepairRecord.parameter19 as trainRepairRecord_parameter19, trainRepairRecord.parameter20 as trainRepairRecord_parameter20, 
+    trainRepairRecord.parameter21 as trainRepairRecord_parameter21, trainRepairRecord.parameter22 as trainRepairRecord_parameter22, 
+    trainRepairRecord.parameter23 as trainRepairRecord_parameter23, trainRepairRecord.parameter24 as trainRepairRecord_parameter24, 
+    trainRepairRecord.parameter25 as trainRepairRecord_parameter25, trainRepairRecord.parameter26 as trainRepairRecord_parameter26, 
+    trainRepairRecord.parameter27 as trainRepairRecord_parameter27, trainRepairRecord.parameter28 as trainRepairRecord_parameter28, 
+    trainRepairRecord.parameter29 as trainRepairRecord_parameter29, trainRepairRecord.parameter30 as trainRepairRecord_parameter30, 
+    trainRepairRecord.parameter31 as trainRepairRecord_parameter31, trainRepairRecord.parameter32 as trainRepairRecord_parameter32
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.perfect.trains.model.TrainRepairRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from train_repairrecord trainRepairRecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from train_repairrecord trainRepairRecord
+    where trainRepairRecord.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete trainRepairRecord from train_repairrecord trainRepairRecord
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.perfect.trains.model.TrainRepairRecordExample" >
+    delete trainRepairRecord from train_repairrecord trainRepairRecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.perfect.trains.model.TrainRepairRecord" useGeneratedKeys="true" keyProperty="id" >
+    insert into train_repairrecord (train_id, train_model, train_name, 
+      repair_date, `type`, parameter1, 
+      parameter2, parameter3, parameter4, 
+      parameter5, parameter6, parameter7, 
+      parameter8, parameter9, parameter10, 
+      parameter11, parameter12, parameter13, 
+      parameter14, parameter15, parameter16, 
+      parameter17, parameter18, parameter19, 
+      parameter20, parameter21, parameter22, 
+      parameter23, parameter24, parameter25, 
+      parameter26, parameter27, parameter28, 
+      parameter29, parameter30, parameter31, 
+      parameter32)
+    values (#{trainId,jdbcType=BIGINT}, #{trainModel,jdbcType=VARCHAR}, #{trainName,jdbcType=VARCHAR}, 
+      #{repairDate,jdbcType=DATE}, #{type,jdbcType=VARCHAR}, #{parameter1,jdbcType=VARCHAR}, 
+      #{parameter2,jdbcType=VARCHAR}, #{parameter3,jdbcType=VARCHAR}, #{parameter4,jdbcType=VARCHAR}, 
+      #{parameter5,jdbcType=VARCHAR}, #{parameter6,jdbcType=VARCHAR}, #{parameter7,jdbcType=VARCHAR}, 
+      #{parameter8,jdbcType=VARCHAR}, #{parameter9,jdbcType=VARCHAR}, #{parameter10,jdbcType=VARCHAR}, 
+      #{parameter11,jdbcType=VARCHAR}, #{parameter12,jdbcType=VARCHAR}, #{parameter13,jdbcType=VARCHAR}, 
+      #{parameter14,jdbcType=VARCHAR}, #{parameter15,jdbcType=VARCHAR}, #{parameter16,jdbcType=VARCHAR}, 
+      #{parameter17,jdbcType=VARCHAR}, #{parameter18,jdbcType=VARCHAR}, #{parameter19,jdbcType=VARCHAR}, 
+      #{parameter20,jdbcType=VARCHAR}, #{parameter21,jdbcType=VARCHAR}, #{parameter22,jdbcType=VARCHAR}, 
+      #{parameter23,jdbcType=VARCHAR}, #{parameter24,jdbcType=VARCHAR}, #{parameter25,jdbcType=VARCHAR}, 
+      #{parameter26,jdbcType=VARCHAR}, #{parameter27,jdbcType=VARCHAR}, #{parameter28,jdbcType=VARCHAR}, 
+      #{parameter29,jdbcType=VARCHAR}, #{parameter30,jdbcType=VARCHAR}, #{parameter31,jdbcType=VARCHAR}, 
+      #{parameter32,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.perfect.trains.model.TrainRepairRecord" useGeneratedKeys="true" keyProperty="id" >
+    insert into train_repairrecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="trainId != null" >
+        train_id,
+      </if>
+      <if test="trainModel != null" >
+        train_model,
+      </if>
+      <if test="trainName != null" >
+        train_name,
+      </if>
+      <if test="repairDate != null" >
+        repair_date,
+      </if>
+      <if test="type != null" >
+        `type`,
+      </if>
+      <if test="parameter1 != null" >
+        parameter1,
+      </if>
+      <if test="parameter2 != null" >
+        parameter2,
+      </if>
+      <if test="parameter3 != null" >
+        parameter3,
+      </if>
+      <if test="parameter4 != null" >
+        parameter4,
+      </if>
+      <if test="parameter5 != null" >
+        parameter5,
+      </if>
+      <if test="parameter6 != null" >
+        parameter6,
+      </if>
+      <if test="parameter7 != null" >
+        parameter7,
+      </if>
+      <if test="parameter8 != null" >
+        parameter8,
+      </if>
+      <if test="parameter9 != null" >
+        parameter9,
+      </if>
+      <if test="parameter10 != null" >
+        parameter10,
+      </if>
+      <if test="parameter11 != null" >
+        parameter11,
+      </if>
+      <if test="parameter12 != null" >
+        parameter12,
+      </if>
+      <if test="parameter13 != null" >
+        parameter13,
+      </if>
+      <if test="parameter14 != null" >
+        parameter14,
+      </if>
+      <if test="parameter15 != null" >
+        parameter15,
+      </if>
+      <if test="parameter16 != null" >
+        parameter16,
+      </if>
+      <if test="parameter17 != null" >
+        parameter17,
+      </if>
+      <if test="parameter18 != null" >
+        parameter18,
+      </if>
+      <if test="parameter19 != null" >
+        parameter19,
+      </if>
+      <if test="parameter20 != null" >
+        parameter20,
+      </if>
+      <if test="parameter21 != null" >
+        parameter21,
+      </if>
+      <if test="parameter22 != null" >
+        parameter22,
+      </if>
+      <if test="parameter23 != null" >
+        parameter23,
+      </if>
+      <if test="parameter24 != null" >
+        parameter24,
+      </if>
+      <if test="parameter25 != null" >
+        parameter25,
+      </if>
+      <if test="parameter26 != null" >
+        parameter26,
+      </if>
+      <if test="parameter27 != null" >
+        parameter27,
+      </if>
+      <if test="parameter28 != null" >
+        parameter28,
+      </if>
+      <if test="parameter29 != null" >
+        parameter29,
+      </if>
+      <if test="parameter30 != null" >
+        parameter30,
+      </if>
+      <if test="parameter31 != null" >
+        parameter31,
+      </if>
+      <if test="parameter32 != null" >
+        parameter32,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="trainId != null" >
+        #{trainId,jdbcType=BIGINT},
+      </if>
+      <if test="trainModel != null" >
+        #{trainModel,jdbcType=VARCHAR},
+      </if>
+      <if test="trainName != null" >
+        #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="repairDate != null" >
+        #{repairDate,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter1 != null" >
+        #{parameter1,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter2 != null" >
+        #{parameter2,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter3 != null" >
+        #{parameter3,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter4 != null" >
+        #{parameter4,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter5 != null" >
+        #{parameter5,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter6 != null" >
+        #{parameter6,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter7 != null" >
+        #{parameter7,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter8 != null" >
+        #{parameter8,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter9 != null" >
+        #{parameter9,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter10 != null" >
+        #{parameter10,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter11 != null" >
+        #{parameter11,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter12 != null" >
+        #{parameter12,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter13 != null" >
+        #{parameter13,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter14 != null" >
+        #{parameter14,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter15 != null" >
+        #{parameter15,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter16 != null" >
+        #{parameter16,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter17 != null" >
+        #{parameter17,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter18 != null" >
+        #{parameter18,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter19 != null" >
+        #{parameter19,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter20 != null" >
+        #{parameter20,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter21 != null" >
+        #{parameter21,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter22 != null" >
+        #{parameter22,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter23 != null" >
+        #{parameter23,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter24 != null" >
+        #{parameter24,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter25 != null" >
+        #{parameter25,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter26 != null" >
+        #{parameter26,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter27 != null" >
+        #{parameter27,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter28 != null" >
+        #{parameter28,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter29 != null" >
+        #{parameter29,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter30 != null" >
+        #{parameter30,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter31 != null" >
+        #{parameter31,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter32 != null" >
+        #{parameter32,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.perfect.trains.model.TrainRepairRecordExample" resultType="java.lang.Integer" >
+    select count(*) from train_repairrecord trainRepairRecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update train_repairrecord trainRepairRecord
+    <set >
+      <if test="record.id != null" >
+        trainRepairRecord.id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.trainId != null" >
+        trainRepairRecord.train_id = #{record.trainId,jdbcType=BIGINT},
+      </if>
+      <if test="record.trainModel != null" >
+        trainRepairRecord.train_model = #{record.trainModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainName != null" >
+        trainRepairRecord.train_name = #{record.trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairDate != null" >
+        trainRepairRecord.repair_date = #{record.repairDate,jdbcType=DATE},
+      </if>
+      <if test="record.type != null" >
+        trainRepairRecord.`type` = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter1 != null" >
+        trainRepairRecord.parameter1 = #{record.parameter1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter2 != null" >
+        trainRepairRecord.parameter2 = #{record.parameter2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter3 != null" >
+        trainRepairRecord.parameter3 = #{record.parameter3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter4 != null" >
+        trainRepairRecord.parameter4 = #{record.parameter4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter5 != null" >
+        trainRepairRecord.parameter5 = #{record.parameter5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter6 != null" >
+        trainRepairRecord.parameter6 = #{record.parameter6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter7 != null" >
+        trainRepairRecord.parameter7 = #{record.parameter7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter8 != null" >
+        trainRepairRecord.parameter8 = #{record.parameter8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter9 != null" >
+        trainRepairRecord.parameter9 = #{record.parameter9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter10 != null" >
+        trainRepairRecord.parameter10 = #{record.parameter10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter11 != null" >
+        trainRepairRecord.parameter11 = #{record.parameter11,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter12 != null" >
+        trainRepairRecord.parameter12 = #{record.parameter12,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter13 != null" >
+        trainRepairRecord.parameter13 = #{record.parameter13,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter14 != null" >
+        trainRepairRecord.parameter14 = #{record.parameter14,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter15 != null" >
+        trainRepairRecord.parameter15 = #{record.parameter15,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter16 != null" >
+        trainRepairRecord.parameter16 = #{record.parameter16,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter17 != null" >
+        trainRepairRecord.parameter17 = #{record.parameter17,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter18 != null" >
+        trainRepairRecord.parameter18 = #{record.parameter18,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter19 != null" >
+        trainRepairRecord.parameter19 = #{record.parameter19,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter20 != null" >
+        trainRepairRecord.parameter20 = #{record.parameter20,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter21 != null" >
+        trainRepairRecord.parameter21 = #{record.parameter21,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter22 != null" >
+        trainRepairRecord.parameter22 = #{record.parameter22,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter23 != null" >
+        trainRepairRecord.parameter23 = #{record.parameter23,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter24 != null" >
+        trainRepairRecord.parameter24 = #{record.parameter24,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter25 != null" >
+        trainRepairRecord.parameter25 = #{record.parameter25,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter26 != null" >
+        trainRepairRecord.parameter26 = #{record.parameter26,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter27 != null" >
+        trainRepairRecord.parameter27 = #{record.parameter27,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter28 != null" >
+        trainRepairRecord.parameter28 = #{record.parameter28,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter29 != null" >
+        trainRepairRecord.parameter29 = #{record.parameter29,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter30 != null" >
+        trainRepairRecord.parameter30 = #{record.parameter30,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter31 != null" >
+        trainRepairRecord.parameter31 = #{record.parameter31,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parameter32 != null" >
+        trainRepairRecord.parameter32 = #{record.parameter32,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update train_repairrecord trainRepairRecord
+    set trainRepairRecord.id = #{record.id,jdbcType=BIGINT},
+      trainRepairRecord.train_id = #{record.trainId,jdbcType=BIGINT},
+      trainRepairRecord.train_model = #{record.trainModel,jdbcType=VARCHAR},
+      trainRepairRecord.train_name = #{record.trainName,jdbcType=VARCHAR},
+      trainRepairRecord.repair_date = #{record.repairDate,jdbcType=DATE},
+      trainRepairRecord.`type` = #{record.type,jdbcType=VARCHAR},
+      trainRepairRecord.parameter1 = #{record.parameter1,jdbcType=VARCHAR},
+      trainRepairRecord.parameter2 = #{record.parameter2,jdbcType=VARCHAR},
+      trainRepairRecord.parameter3 = #{record.parameter3,jdbcType=VARCHAR},
+      trainRepairRecord.parameter4 = #{record.parameter4,jdbcType=VARCHAR},
+      trainRepairRecord.parameter5 = #{record.parameter5,jdbcType=VARCHAR},
+      trainRepairRecord.parameter6 = #{record.parameter6,jdbcType=VARCHAR},
+      trainRepairRecord.parameter7 = #{record.parameter7,jdbcType=VARCHAR},
+      trainRepairRecord.parameter8 = #{record.parameter8,jdbcType=VARCHAR},
+      trainRepairRecord.parameter9 = #{record.parameter9,jdbcType=VARCHAR},
+      trainRepairRecord.parameter10 = #{record.parameter10,jdbcType=VARCHAR},
+      trainRepairRecord.parameter11 = #{record.parameter11,jdbcType=VARCHAR},
+      trainRepairRecord.parameter12 = #{record.parameter12,jdbcType=VARCHAR},
+      trainRepairRecord.parameter13 = #{record.parameter13,jdbcType=VARCHAR},
+      trainRepairRecord.parameter14 = #{record.parameter14,jdbcType=VARCHAR},
+      trainRepairRecord.parameter15 = #{record.parameter15,jdbcType=VARCHAR},
+      trainRepairRecord.parameter16 = #{record.parameter16,jdbcType=VARCHAR},
+      trainRepairRecord.parameter17 = #{record.parameter17,jdbcType=VARCHAR},
+      trainRepairRecord.parameter18 = #{record.parameter18,jdbcType=VARCHAR},
+      trainRepairRecord.parameter19 = #{record.parameter19,jdbcType=VARCHAR},
+      trainRepairRecord.parameter20 = #{record.parameter20,jdbcType=VARCHAR},
+      trainRepairRecord.parameter21 = #{record.parameter21,jdbcType=VARCHAR},
+      trainRepairRecord.parameter22 = #{record.parameter22,jdbcType=VARCHAR},
+      trainRepairRecord.parameter23 = #{record.parameter23,jdbcType=VARCHAR},
+      trainRepairRecord.parameter24 = #{record.parameter24,jdbcType=VARCHAR},
+      trainRepairRecord.parameter25 = #{record.parameter25,jdbcType=VARCHAR},
+      trainRepairRecord.parameter26 = #{record.parameter26,jdbcType=VARCHAR},
+      trainRepairRecord.parameter27 = #{record.parameter27,jdbcType=VARCHAR},
+      trainRepairRecord.parameter28 = #{record.parameter28,jdbcType=VARCHAR},
+      trainRepairRecord.parameter29 = #{record.parameter29,jdbcType=VARCHAR},
+      trainRepairRecord.parameter30 = #{record.parameter30,jdbcType=VARCHAR},
+      trainRepairRecord.parameter31 = #{record.parameter31,jdbcType=VARCHAR},
+      trainRepairRecord.parameter32 = #{record.parameter32,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.perfect.trains.model.TrainRepairRecord" >
+    update train_repairrecord
+    <set >
+      <if test="trainId != null" >
+        train_id = #{trainId,jdbcType=BIGINT},
+      </if>
+      <if test="trainModel != null" >
+        train_model = #{trainModel,jdbcType=VARCHAR},
+      </if>
+      <if test="trainName != null" >
+        train_name = #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="repairDate != null" >
+        repair_date = #{repairDate,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter1 != null" >
+        parameter1 = #{parameter1,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter2 != null" >
+        parameter2 = #{parameter2,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter3 != null" >
+        parameter3 = #{parameter3,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter4 != null" >
+        parameter4 = #{parameter4,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter5 != null" >
+        parameter5 = #{parameter5,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter6 != null" >
+        parameter6 = #{parameter6,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter7 != null" >
+        parameter7 = #{parameter7,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter8 != null" >
+        parameter8 = #{parameter8,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter9 != null" >
+        parameter9 = #{parameter9,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter10 != null" >
+        parameter10 = #{parameter10,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter11 != null" >
+        parameter11 = #{parameter11,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter12 != null" >
+        parameter12 = #{parameter12,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter13 != null" >
+        parameter13 = #{parameter13,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter14 != null" >
+        parameter14 = #{parameter14,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter15 != null" >
+        parameter15 = #{parameter15,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter16 != null" >
+        parameter16 = #{parameter16,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter17 != null" >
+        parameter17 = #{parameter17,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter18 != null" >
+        parameter18 = #{parameter18,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter19 != null" >
+        parameter19 = #{parameter19,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter20 != null" >
+        parameter20 = #{parameter20,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter21 != null" >
+        parameter21 = #{parameter21,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter22 != null" >
+        parameter22 = #{parameter22,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter23 != null" >
+        parameter23 = #{parameter23,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter24 != null" >
+        parameter24 = #{parameter24,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter25 != null" >
+        parameter25 = #{parameter25,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter26 != null" >
+        parameter26 = #{parameter26,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter27 != null" >
+        parameter27 = #{parameter27,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter28 != null" >
+        parameter28 = #{parameter28,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter29 != null" >
+        parameter29 = #{parameter29,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter30 != null" >
+        parameter30 = #{parameter30,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter31 != null" >
+        parameter31 = #{parameter31,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter32 != null" >
+        parameter32 = #{parameter32,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.perfect.trains.model.TrainRepairRecord" >
+    update train_repairrecord
+    set train_id = #{trainId,jdbcType=BIGINT},
+      train_model = #{trainModel,jdbcType=VARCHAR},
+      train_name = #{trainName,jdbcType=VARCHAR},
+      repair_date = #{repairDate,jdbcType=DATE},
+      `type` = #{type,jdbcType=VARCHAR},
+      parameter1 = #{parameter1,jdbcType=VARCHAR},
+      parameter2 = #{parameter2,jdbcType=VARCHAR},
+      parameter3 = #{parameter3,jdbcType=VARCHAR},
+      parameter4 = #{parameter4,jdbcType=VARCHAR},
+      parameter5 = #{parameter5,jdbcType=VARCHAR},
+      parameter6 = #{parameter6,jdbcType=VARCHAR},
+      parameter7 = #{parameter7,jdbcType=VARCHAR},
+      parameter8 = #{parameter8,jdbcType=VARCHAR},
+      parameter9 = #{parameter9,jdbcType=VARCHAR},
+      parameter10 = #{parameter10,jdbcType=VARCHAR},
+      parameter11 = #{parameter11,jdbcType=VARCHAR},
+      parameter12 = #{parameter12,jdbcType=VARCHAR},
+      parameter13 = #{parameter13,jdbcType=VARCHAR},
+      parameter14 = #{parameter14,jdbcType=VARCHAR},
+      parameter15 = #{parameter15,jdbcType=VARCHAR},
+      parameter16 = #{parameter16,jdbcType=VARCHAR},
+      parameter17 = #{parameter17,jdbcType=VARCHAR},
+      parameter18 = #{parameter18,jdbcType=VARCHAR},
+      parameter19 = #{parameter19,jdbcType=VARCHAR},
+      parameter20 = #{parameter20,jdbcType=VARCHAR},
+      parameter21 = #{parameter21,jdbcType=VARCHAR},
+      parameter22 = #{parameter22,jdbcType=VARCHAR},
+      parameter23 = #{parameter23,jdbcType=VARCHAR},
+      parameter24 = #{parameter24,jdbcType=VARCHAR},
+      parameter25 = #{parameter25,jdbcType=VARCHAR},
+      parameter26 = #{parameter26,jdbcType=VARCHAR},
+      parameter27 = #{parameter27,jdbcType=VARCHAR},
+      parameter28 = #{parameter28,jdbcType=VARCHAR},
+      parameter29 = #{parameter29,jdbcType=VARCHAR},
+      parameter30 = #{parameter30,jdbcType=VARCHAR},
+      parameter31 = #{parameter31,jdbcType=VARCHAR},
+      parameter32 = #{parameter32,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
